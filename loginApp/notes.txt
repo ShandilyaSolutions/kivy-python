@@ -1,0 +1,48 @@
+import kivy
+kivy.require('2.1.0')
+
+**Anything not discussed here was discussed in https://github.com/ShandilyaSolutions/kivy-python/blob/main/firstApp/notes.txt
+
+from kivy.app import App
+
+from kivy.uix.gridlayout import GridLayout
+    => imports the gird layout from uix
+
+from kivy.uix.label import Label
+
+from kivy.uix.textinput import TextInput
+    => imports the text input (a field where user can input data) from uix
+
+
+
+class LoginScreen(GridLayout):
+    =>This class is used to create a Login screen wich will be loaded by the MyApp class at the time of execution
+
+
+    def __init__(self, **kwargs):
+        super(LoginScreen, self).__init__(**kwargs)
+        self.cols=2
+    
+        => Following code adds an input field to enter username
+        self.add_widget(Label(text='User Name'))
+        self.username=TextInput(multiline=False) 
+            => the TextInput Widget is added which does not allow for multiline inputs.
+        self.add_widget(self.username)
+
+        +> Following code adds an input feild to enter password
+        self.add_widget(Label(text='Password'))
+        self.password=TextInput(password=True, multiline=False)
+            => password=True ensures that our password is not visible to others.
+        self.add_widget(self.password)
+
+
+
+class MyApp(App):
+
+    def build(self):
+        return LoginScreen()
+        => On running our application the LoginScreen class is shown as root Widget
+
+
+if __name__=='__main__':
+    MyApp().run()
