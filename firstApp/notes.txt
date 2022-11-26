@@ -1,0 +1,23 @@
+import kivy
+kivy.require('2.1.0') # replace with your current kivy version !
+
+from kivy.app import App
+=>  The base class of our application must inherit from the App class (path = kivy_installation_dir/app.py) 
+
+from kivy.uix.label import Label
+=> The 'uix' class holds all the widgets and layouts. Here we are importing Label widget
+
+
+class MyApp(App):
+    => The base class of our app. It is where we have to rename our application to something meaningful
+
+    def build(self):
+    => Our root widget
+        return Label(text='Hello world')
+        =>We initialized a Label with text ‘Hello World’ and return its instance. This Label will be the Root Widget of this App.
+            Label Widget : 
+                Label(text=<text you want to display>)
+
+
+if __name__ == '__main__':
+    MyApp().run() => running our app
